@@ -76,6 +76,82 @@
                             </div>
                         </div>
                     </fieldset>
+
+                    <fieldset class="address">
+                        <legend>Endereço residencial</legend>
+
+                        <div class="input-wrapper">
+                            <label for="cep">CEP</label>
+                            <input type="text" id="cep" name="cep" value="12345-678">
+                        </div>
+
+                        <div class="flex">
+                            <div class="input-wrapper flex-2" >
+                                <label for="street">Rua</label>
+                                <input type="text" id="street" name="street" value="Rua Das Flores" disabled>
+                            </div>
+
+                            <div class="input-wrapper flex-1">
+                                <label for="number">Número</label>
+                                <input type="number" id="number" name="number">
+                            </div>
+
+                        </div>
+
+                        <div class="flex">
+                            <div class="input-wrapper flex-2">
+                                <label for="city">Cidade</label>
+                                <input type="text" id="city" name="city" value="São Paulo" disabled>
+                            </div>
+
+                            <div class="input-wrapper flex-1">
+                                <label for="state">Estado</label>
+                                <input type="text" id="state" name="state" value="SP" disabled>
+                            </div>
+
+                        
+                    </fieldset>
+
+                    <fieldset class="guardian">
+                        <legend>Informação do responsável</legend>
+
+                        <div class="input-wrapper">
+                            <label for="guardian">Nome do responsável</label>
+                            <input type="text" id="guardian" name="guardian"><small>Principal responsável legal e contato de emergência</small>
+                        </div>
+
+                        <div class="input-wrapper">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(11) 9 45596012">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="mail">E-mail</label>
+                            <input type="email" id="mail" name="mail" placeholder="email@exemplo.com" required>
+                            <div class="error">
+                                <img src="assets/icons/alert-circle.svg" alt="alerta de erro">
+                                <span>Insira um e-mail válido</span>
+                            </div>
+                        </div>
+                        
+                    </fieldset>
+
+                    <fieldset class="enroll-options">
+                        <legend>Opção de matrícula</legend>
+
+                        <div class="input-wrapper">
+                            <label>Selecione o turno do estudo</label>
+
+                            <div class="radio-wrapper">
+                                <div class="radio-inner">
+                                    <div class="radio-image">
+                                        <input type="radio" name="study-shift" value="morning" id="morning">
+                                        <img src="assets/icons/sun-cloud-02.svg" alt="Sol com nuvem">
+                                        <label for="morning">Manhã</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
                 </form>
             </div>
         </main>

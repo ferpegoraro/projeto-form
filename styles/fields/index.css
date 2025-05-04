@@ -58,3 +58,70 @@ input[type="date"]{
 select{
     background: url(../../assets/icons/arrow-down-01.svg) no-repeat calc(100% - 1rem);
 }
+
+.address .flex{
+    gap: 1.25rem;
+}
+
+.input-wrapper:has([disabled]){
+    opacity: .5;
+}
+
+input{
+    &[disabled]{
+        background-color: var(--surface-disabled);
+        border: 1px solid var(--stroke-default);
+
+        color: var(--text-primary);
+    }
+
+    &:invalid{
+        border: 0.125rem solid var(--semantic-error);
+    }
+
+    & + small{
+        font: var(--text-sm);
+        color: #78716C;
+
+        display: inline-block;
+        margin-top: .25rem;
+
+    }
+
+    /* 
+     * O seletor '+' é o seletor de irmão adjacente (adjacent sibling selector).
+     * Ele seleciona um elemento que está imediatamente após outro elemento específico.
+     * 
+     * Neste caso, &[required] + .error seleciona elementos com classe .error que
+     * vêm imediatamente após um input com atributo required.
+     * 
+     * Exemplo no HTML:
+     * <input type="email" required>
+     * <div class="error">Mensagem de erro</div>
+     *
+     * Este seletor permite estilizar a mensagem de erro apenas quando
+     * ela está associada a um campo obrigatório.
+     */
+    &[required] + .error{
+        display: flex;
+        align-items: center;
+        gap: .25rem;
+
+        font: var(--text-sm);
+        color: var(--semantic-error);
+
+        margin-top: .25rem;
+    }
+
+    /* 
+     * Aqui, &:valid + .error seleciona elementos com classe .error que
+     * vêm imediatamente após um input que está em estado válido.
+     * 
+     * Quando o input está válido, escondemos a mensagem de erro.
+     * Isso cria um feedback visual automático: a mensagem de erro
+     * só aparece quando o campo está inválido.
+     */
+    &:not(:focus):valid + .error{
+        display: none;
+    }
+}
