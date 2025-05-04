@@ -1,0 +1,130 @@
+input, textarea, select{
+    appearance: none;
+
+    width: 100%;
+    border-radius: 0.5rem;
+    border: 1px solid var(--stroke-default);
+    padding: 0.75rem 1rem;
+
+    font: var(--text-sm);
+
+}
+
+label{
+    font: var(--text-sm);
+    color: var(--text-secondary);
+
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus
+input[type="date"]:focus-within{
+    outline: 0.25rem solid var(--surface-secondary);
+    border: .125rem solid var(--stroke-highlight);
+    outline-offset: .1px;
+
+}
+
+input[type="date"]{
+    position: relative;
+    &::-webkit-calendar-picker-indicator{
+        opacity: 0;
+    }
+
+    &::before{
+        content:"";
+        position: absolute;
+        background: url(../../assets/icons/calendar-03.svg);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        right: 1rem;
+        width: 1.25rem;
+        height: 1.25rem;
+
+        top: 50%;
+        transform: translateY(-50%);
+    }
+        
+
+    
+}
+
+select{
+    background: url(../../assets/icons/arrow-down-01.svg) no-repeat calc(100% - 1rem);
+}
+
+.address .flex{
+    gap: 1.25rem;
+}
+
+.input-wrapper:has([disabled]){
+    opacity: .5;
+}
+
+input{
+    &[disabled]{
+        background-color: var(--surface-disabled);
+        border: 1px solid var(--stroke-default);
+
+        color: var(--text-primary);
+    }
+
+    &:invalid{
+        border: 0.125rem solid var(--semantic-error);
+    }
+
+    & + small{
+        font: var(--text-sm);
+        color: #78716C;
+
+        display: inline-block;
+        margin-top: .25rem;
+
+    }
+
+    /* 
+     * O seletor '+' é o seletor de irmão adjacente (adjacent sibling selector).
+     * Ele seleciona um elemento que está imediatamente após outro elemento específico.
+     * 
+     * Neste caso, &[required] + .error seleciona elementos com classe .error que
+     * vêm imediatamente após um input com atributo required.
+     * 
+     * Exemplo no HTML:
+     * <div class="input-wrapper">
+     *   <input type="email" required>
+     *   <div class="error">Mensagem de erro</div>
+     * </div>
+     *
+     * IMPORTANTE: O elemento .error DEVE estar dentro do mesmo pai e
+     * imediatamente após o input para que o seletor + funcione.
+     */
+    &[required] + .error{
+        display: flex;
+        align-items: center;
+        gap: .25rem;
+
+        font: var(--text-sm);
+        color: var(--semantic-error);
+
+        margin-top: .25rem;
+    }
+
+    /* 
+     * Aqui, &:not(:focus):valid + .error seleciona elementos com classe .error que
+     * vêm imediatamente após um input que está em estado válido E não está em foco.
+     * 
+     * O :not(:focus) é importante porque:
+     * 1. Evita que a mensagem de erro desapareça enquanto o usuário ainda está digitando
+     * 2. Mantém o feedback visual enquanto o campo está sendo preenchido
+     * 3. Só esconde a mensagem quando o campo perde o foco e está válido
+     * 
+     * Isso melhora a experiência do usuário, dando feedback constante durante a interação.
+     */
+    &:not(:focus):valid + .error{
+        display: none;
+    }
+}
